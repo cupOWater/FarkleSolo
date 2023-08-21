@@ -1,0 +1,18 @@
+[
+    {
+        "userName" : "David",
+        "highScore" : 1400
+    },
+    {
+        "userName" : "Alan",
+        "highScore" : 2050
+    },
+    {
+        "userName" : "Jonathan",
+        "highScore" : 520
+    },
+    {
+        "userName" : "Killian",
+        "highScore" : 4500
+    }
+]

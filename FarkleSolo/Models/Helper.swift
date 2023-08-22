@@ -10,6 +10,7 @@ import Foundation
 
 import Foundation
 import CoreLocation
+import AVFoundation
 
 
 // dijipiji. (2018, December 5). How can I change locale programmatically with Swift [Online forum post]. StackOverflow. https://stackoverflow.com/a/31744226
@@ -18,6 +19,18 @@ extension String {
         let path = Bundle.main.path(forResource: lang, ofType: "lproj")
         let bundle = Bundle(path: path!)
         return NSLocalizedString(self, tableName: nil, bundle: bundle!, value: "", comment: "")
+    }
+}
+
+var audioPlayer : AVAudioPlayer?
+func playSound(sound : String, type : String){
+    if let path = Bundle.main.path(forResource: sound, ofType: type) {
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: URL(filePath: path))
+            audioPlayer?.play()
+        } catch {
+            print("Error: \(error.localizedDescription)")
+        }
     }
 }
 

@@ -94,6 +94,7 @@ struct GameView: View {
                 
                 HStack {
                     Button {
+                        playSound(sound: "select2", type: "wav")
                         game.canScore = false
                         game.confirmHand()
                         game.canRoll = true
@@ -127,6 +128,7 @@ struct GameView: View {
                         }
                         
                         game.rollDice()
+                        playSound(sound: "dice", type: "wav")
                         
                         withAnimation(animation){
                             isRolling = -30
@@ -175,6 +177,12 @@ struct GameView: View {
                     }
                 }
                 .onAppear{
+                    if(game.totalScore >= game.neededScore){
+                        playSound(sound: "win", type: "wav")
+                    }else {
+                        playSound(sound: "lose", type: "wav")
+                    }
+                    
                     if(game.totalScore > getHighScore(userName: userName)){
                         newHighScore = true
                         highScore = game.totalScore

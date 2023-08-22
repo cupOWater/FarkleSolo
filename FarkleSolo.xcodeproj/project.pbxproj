@@ -22,6 +22,11 @@
 		1FD5D38F2A94B90200F758CC /* AchievementList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD5D38E2A94B90100F758CC /* AchievementList.swift */; };
 		1FD5D39B2A94D02600F758CC /* coiny-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1FD5D39A2A94D02600F758CC /* coiny-regular.ttf */; };
 		1FD5D39C2A94D66D00F758CC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1FD5D39E2A94D66D00F758CC /* Localizable.strings */; };
+		1FD5D3A62A950AE400F758CC /* dice.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1FD5D3A52A950AE400F758CC /* dice.wav */; };
+		1FD5D3A82A950C2900F758CC /* win.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1FD5D3A72A950C2900F758CC /* win.wav */; };
+		1FD5D3AA2A950D9800F758CC /* lose.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1FD5D3A92A950D9800F758CC /* lose.wav */; };
+		1FD5D3AC2A950EA500F758CC /* select2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1FD5D3AB2A950EA500F758CC /* select2.wav */; };
+		1FD5D3AE2A950EAA00F758CC /* select1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1FD5D3AD2A950EAA00F758CC /* select1.wav */; };
 		1FE60C1B2A91ADB20003625A /* EndGameModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE60C1A2A91ADB20003625A /* EndGameModal.swift */; };
 		1FE60C1D2A91E5620003625A /* UserNameModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE60C1C2A91E5620003625A /* UserNameModal.swift */; };
 		1FE60C1F2A91EFD20003625A /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE60C1E2A91EFD20003625A /* Helper.swift */; };
@@ -48,6 +53,11 @@
 		1FD5D39A2A94D02600F758CC /* coiny-regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "coiny-regular.ttf"; sourceTree = "<group>"; };
 		1FD5D39D2A94D66D00F758CC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1FD5D39F2A94D69600F758CC /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1FD5D3A52A950AE400F758CC /* dice.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = dice.wav; sourceTree = "<group>"; };
+		1FD5D3A72A950C2900F758CC /* win.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = win.wav; sourceTree = "<group>"; };
+		1FD5D3A92A950D9800F758CC /* lose.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = lose.wav; sourceTree = "<group>"; };
+		1FD5D3AB2A950EA500F758CC /* select2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = select2.wav; sourceTree = "<group>"; };
+		1FD5D3AD2A950EAA00F758CC /* select1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = select1.wav; sourceTree = "<group>"; };
 		1FE60C1A2A91ADB20003625A /* EndGameModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndGameModal.swift; sourceTree = "<group>"; };
 		1FE60C1C2A91E5620003625A /* UserNameModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameModal.swift; sourceTree = "<group>"; };
 		1FE60C1E2A91EFD20003625A /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
@@ -85,6 +95,7 @@
 		1F5FFFDD2A8626520009F7C5 /* FarkleSolo */ = {
 			isa = PBXGroup;
 			children = (
+				1FD5D3A02A9507E000F758CC /* Sounds */,
 				1F7574B92A90C6B2006E5943 /* Models */,
 				1F7574B42A90B712006E5943 /* Components */,
 				1F7574B32A90B6D1006E5943 /* Views */,
@@ -150,6 +161,18 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		1FD5D3A02A9507E000F758CC /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				1FD5D3A52A950AE400F758CC /* dice.wav */,
+				1FD5D3A72A950C2900F758CC /* win.wav */,
+				1FD5D3A92A950D9800F758CC /* lose.wav */,
+				1FD5D3AD2A950EAA00F758CC /* select1.wav */,
+				1FD5D3AB2A950EA500F758CC /* select2.wav */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -209,9 +232,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FD5D3AC2A950EA500F758CC /* select2.wav in Resources */,
 				1F5FFFE62A8626550009F7C5 /* Preview Assets.xcassets in Resources */,
+				1FD5D3A82A950C2900F758CC /* win.wav in Resources */,
+				1FD5D3AE2A950EAA00F758CC /* select1.wav in Resources */,
 				1FD5D39C2A94D66D00F758CC /* Localizable.strings in Resources */,
+				1FD5D3AA2A950D9800F758CC /* lose.wav in Resources */,
 				1F7574AD2A9099A2006E5943 /* Supfun.otf in Resources */,
+				1FD5D3A62A950AE400F758CC /* dice.wav in Resources */,
 				1FD5D39B2A94D02600F758CC /* coiny-regular.ttf in Resources */,
 				1F5FFFE32A8626550009F7C5 /* Assets.xcassets in Resources */,
 			);

@@ -14,8 +14,8 @@ struct DiceButton: View {
     
     var body: some View {
         Button {
+            playSound(sound: "select1", type: "wav")
             game.selected[index].toggle()
-            
             game.canScore = game.getScore(selectedArr: game.getSelected()) > 0 ? true : false
         } label: {
             Image("dice_\(game.rolledDice[index])")

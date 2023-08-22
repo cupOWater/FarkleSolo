@@ -152,6 +152,23 @@ struct Game : Codable, Hashable{
             return 0
         }
         
+        // of a kind
+        if(count >= 3){
+            var val = sortedHand[0]
+            var valid = true
+            for i in 1..<count {
+                if(sortedHand[i] != val){
+                    valid = false
+                }
+            }
+            if(valid){
+                if(val == 1){
+                    val = 10
+                }
+                
+                return val * 100 + (val * 100) * (count - 3)
+            }
+        }
         
         if(count == 6){
             // 3 pairs
@@ -162,24 +179,6 @@ struct Game : Codable, Hashable{
             if (sortedHand[0] == 1 && sortedHand[1] == 2 && sortedHand[2] == 3 && sortedHand[3] == 4 && sortedHand[4] == 5 && sortedHand[5] == 6) {return 1000}
         }
         
-        // of a kind
-        if(count >= 3){
-            var val = sortedHand[0]
-            var valid = true
-            for i in 1..<count {
-                if(sortedHand[i] != val){
-                    valid = false
-                }
-            }
-            if(!valid){return 0}
-            
-            if(val == 1){
-                val = 10
-            }
-            
-            return val * 100 + (val * 100) * (count - 3)
-        }
-
         return 0
         
     }

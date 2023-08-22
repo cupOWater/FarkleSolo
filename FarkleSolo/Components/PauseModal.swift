@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct PauseModal: View {
-    
+    @AppStorage("language") var lang : String = "en"
+
     @Binding var isPaused : Bool
     var dismiss : () -> Void
+    @State var showTutorial = false
     
     init(isPaused: Binding<Bool>, dismiss: @escaping () -> Void) {
         self._isPaused = isPaused
@@ -23,9 +25,10 @@ struct PauseModal: View {
                 .opacity(0.3)
             
             VStack{
-                Text("PAUSED")
-                    .font(.custom("Supfun", size: 60))
+                Text("PAUSED".localized(lang: lang))
+                    .font(.custom("coiny-regular", size: 60))
                     .foregroundColor(.black)
+                    .padding(.bottom, -1)
                 
                 VStack{
                     Button {
@@ -33,10 +36,14 @@ struct PauseModal: View {
                     } label: {
                         MainMenuButton(textLabel: "Resume", disabled: false, textColor: .white, backgroundColor: .blue)
                     }
-                    NavigationLink {
+                    Button {
                         // How to play view
+                        showTutorial.toggle()
                     } label: {
                         MainMenuButton(textLabel: "Game Rule", disabled: false, textColor: .white, backgroundColor: .black)
+                    }
+                    .sheet(isPresented: $showTutorial) {
+                        TutorialView()
                     }
                     Button {
                         dismiss()

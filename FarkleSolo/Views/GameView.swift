@@ -9,13 +9,18 @@ import SwiftUI
 
 struct GameView: View {
     @Environment(\.dismiss) private var dismiss
-    
+    @AppStorage("language") var lang : String = "en"
+
     let maxTurn : Int
-    @State var userName : String
+    let userName : String
     @State var isPaused = false
     @Binding var game : Game
     @Binding var highScore : Int
     @State var isRolling : CGFloat = 0
+    @State var newHighScore = false
+    @State var newAchievement : [String] = []
+    @State var achieveOffset : CGFloat = -10
+    @State var achieveOpac : CGFloat = 0
     
     let animation = Animation.default.repeatCount(5).speed(10)
     
@@ -40,32 +45,31 @@ struct GameView: View {
             }
             VStack {
                 
-                Text("Stage \(String(game.stage))")
-                    .font(.custom("Supfun", size: 35))
+                Text("\("Stage".localized(lang: lang)) \(String(game.stage))")
+                    .font(.custom("coiny-regular", size: 35))
+                    .padding(.bottom, -48)
                 
                 HStack{
-                    Text("Turn: ")
-                        .font(.custom("Supfun", size: 30))
+                    Text("\("turn".localized(lang: lang)): ")
+                        .font(.custom("coiny-regular", size: 30))
                     Text("\(game.turnCounter > game.maxTurn ? String(game.maxTurn) : String(game.turnCounter)) / \(String(game.maxTurn))")
-                        .font(.custom("Supfun", size: 30))
+                        .font(.custom("coiny-regular", size: 30))
                 }
+                .lineLimit(1)
+                .minimumScaleFactor(0.1)
+                .padding(.bottom, -35)
                 HStack{
-                    Text("Required Score: ")
-                        .font(.custom("Supfun", size: 30))
-                    Text(String(game.neededScore))
-                        .font(.custom("Supfun", size: 30))
+                    Text("\("Total Score".localized(lang: lang)): ")
+                        .font(.custom("coiny-regular", size: 25))
+                    Text("\(String(game.totalScore))/\(String(game.neededScore))")
+                        .font(.custom("coiny-regular", size: 25))
                 }
+                .padding(.bottom, -35)
                 HStack{
-                    Text("Total Score: ")
-                        .font(.custom("Supfun", size: 25))
-                    Text(String(game.totalScore))
-                        .font(.custom("Supfun", size: 25))
-                }
-                HStack{
-                    Text("Round Score: ")
-                        .font(.custom("Supfun", size: 25))
+                    Text("\("Round Score".localized(lang: lang)): ")
+                        .font(.custom("coiny-regular", size: 25))
                     Text(String(game.turnScore))
-                        .font(.custom("Supfun", size: 25))
+                        .font(.custom("coiny-regular", size: 25))
                 }
                 
                 VStack{
@@ -75,12 +79,12 @@ struct GameView: View {
                         HStack{
                             Spacer()
                             DiceButton(game: $game, index: idxLeft)
-                                .offset(x: !game.selected[idxLeft] ? isRolling : 0)
+                                .offset(x: isRolling)
                             
                             Spacer()
                             
                             DiceButton(game: $game, index: idxRight)
-                                .offset(x: !game.selected[idxRight] ? isRolling : 0)
+                                .offset(x: isRolling)
                             
                             Spacer()
                         }.padding(5)
@@ -96,11 +100,21 @@ struct GameView: View {
                         
                         saveGame(userName: userName, game: game)
                     } label: {
-                        MainMenuButton(textLabel: "Select", disabled: !game.canScore, width: 150, textColor: .white, backgroundColor: .blue)
+                        MainMenuButton(textLabel: "Select", disabled: !game.canScore, width: 150, textColor: .white, backgroundColor: .orange)
                     }.disabled(!game.canScore)
 
                     Button {
                         if !game.canContinue{
+                            if(game.turnScore >= 500){
+                                if (addUserAchievement(userName: userName, achievement: "500pts")){
+                                    newAchievement.append("500pts")
+                                }
+                            }
+                            if(game.turnScore >= 2000){
+                                if (addUserAchievement(userName: userName, achievement: "2000pts")){
+                                    newAchievement.append("2000pts")
+                                }
+                            }
                             game.nextTurn()
                         }
                         
@@ -118,7 +132,7 @@ struct GameView: View {
                             isRolling = -30
                         }
                         
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25){
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
                             withAnimation(animation){
                                 isRolling = 0
                             }
@@ -140,13 +154,29 @@ struct GameView: View {
             .padding(.top, 15)
 
             if(game.turnCounter > game.maxTurn){
-                EndGameModal(score: game.totalScore, neededScore: game.neededScore) {
+                EndGameModal(score: game.totalScore, neededScore: game.neededScore, newHighScore: newHighScore) {
+                    if(game.totalScore < game.neededScore){
+                        game = Game()
+                    }
                     dismiss()
                 } nextStage: {
                     game.nextStage()
+                    newHighScore = false
+                    if (game.stage == 2){
+                        if (addUserAchievement(userName: userName, achievement: "stage2")){
+                            newAchievement.append("stage2")
+                        }
+                    }
+                    
+                    if (game.stage == 5){
+                        if (addUserAchievement(userName: userName, achievement: "stage5")){
+                            newAchievement.append("stage5")
+                        }
+                    }
                 }
                 .onAppear{
                     if(game.totalScore > getHighScore(userName: userName)){
+                        newHighScore = true
                         highScore = game.totalScore
                         setHighScore(userName: userName, score: game.totalScore)
                     }
@@ -156,6 +186,32 @@ struct GameView: View {
             if(isPaused){
                 PauseModal(isPaused: $isPaused) {
                     dismiss()
+                }
+            }
+            
+            if(!newAchievement.isEmpty) {
+                VStack {
+                    ForEach(newAchievement, id: \.self) { a in
+                        AchivementNoti(achievement: a)
+                    }
+                    
+                    Spacer()
+                }
+                .opacity(achieveOpac)
+                .offset(y: achieveOffset)
+                .animation(.easeIn(duration: 0.5), value: achieveOffset)
+                .onAppear{
+                    achieveOffset = 10
+                    achieveOpac = 1
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        withAnimation(.easeOut(duration: 0.5)){
+                            achieveOffset = -10
+                            achieveOpac = 0
+                        }
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                            newAchievement = []
+                        }
+                    }
                 }
             }
         }

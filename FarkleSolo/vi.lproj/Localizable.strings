@@ -1,0 +1,47 @@
+/* 
+  Localizable.strings
+  FarkleSolo
+
+  Created by MacNCheese on 22/08/2023.
+  
+*/
+
+"continue" = "TIẾP TỤC";
+"newGame" = "CHƠI MỚI";
+"setting" = "CÀI ĐẶT";
+"how2play" = "CÁCH CHƠI";
+"leaderboard" = "BẢNG ĐIỂM";
+"language" = "Ngôn Ngữ";
+"darkMode" = "Đen Mode";
+"turn" = "Lượt";
+"logout" = "Đăng xuất";
+"WHO ARE YOU?" = "TÊN BẠN LÀ?";
+"Confirm" = "Tiếp";
+"PAUSED" = "DỪNG";
+"Resume" = "Tiếp Tục";
+"Game Rule" = "Luật Chơi";
+"Back" = "Về";
+"Next Stage" = "Màn Tiếp";
+"VICTORY" = "THẮNG";
+"LOSE" = "THUA";
+"Achievements" = "Thành Tựu";
+"Achievement Earned!" = "Thành tựu mới!";
+"Reach Stage 2" = "Đến màn 2";
+"Reach Stage 5" = "Đến màn 5";
+"Earn 500 points in 1 turn" = "Nhận 500 điểm trong 1 lượt";
+"Earn 2000 points in 1 turn" = "Nhận 2000 điểm trong 1 lượt";
+"Stage" = "Màn";
+"Total Score" = "Tổng Điểm";
+"Round Score" = "Điểm Vòng";
+"Roll" = "Đỗ";
+"Select" = "Chọn";
+"Hands" = "Tay";
+"Rules" = "Luật";
+"Next Turn" = "Lượt Tiếp";
+
+"rule1" = "Đỗ 6 xí ngầu để bắt đầu";
+"rule2" = "Từ các xí ngầu đỗ, chọn Tay của bạn";
+"rule3" = "Xí ngầu được chọn sẽ được lấy ra, và điểm sẽ được cộng vào vòng";
+"rule4" = "Đỗ các xí ngầu còn lại, chọn Tay, nhận điểm, lặp lại";
+"rule5" = "Nếu tất cả xí ngầu được lấy ra, bạn sẽ nhận thêm 6 xí ngầu khác";
+"rule6" = "Khi bạn qua hết lượt, bạn qua màn tiếp theo nếu đủ điểm";

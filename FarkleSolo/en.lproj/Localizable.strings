@@ -1,0 +1,25 @@
+/* 
+  Localizable.strings
+  FarkleSolo
+
+  Created by MacNCheese on 22/08/2023.
+  
+*/
+
+"continue" = "CONTINUE";
+"newGame" = "NEW GAME";
+"setting" = "SETTING";
+"how2play" = "HOW TO PLAY";
+"leaderboard" = "LEADERBOARD";
+
+"language" = "Language";
+"darkMode" = "Dark Mode";
+"turn" = "Turn";
+"logout" = "Logout";
+
+"rule1" = "You start by rolling 6 dice";
+"rule2" = "From the rolled dice, select your Hand(s)";
+"rule3" = "The selected Hand(s) will be stashed away and points will be added to the turn score";
+"rule4" = "Roll the remaining dice, select Hands, and repeat until there are no available move left";
+"rule5" = "If no dice remaining and after you stash your Hand, you are provided with a new set of dice";
+"rule6" = "After all turns are made, you can move to next stage if you have enough points";

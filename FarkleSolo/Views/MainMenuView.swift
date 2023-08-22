@@ -1,27 +1,25 @@
 //
-//  ContentView.swift
+//  MainMenuView.swift
 //  FarkleSolo
 //
-//  Created by MacNCheese on 11/08/2023.
+//  Created by MacNCheese on 21/08/2023.
 //
 
 import SwiftUI
 
-struct ContentView: View {
-    
-    @AppStorage("darkMode") var isDark : Bool = false
-    @AppStorage("maxTurn") var maxTurn : Int = 6
-    @AppStorage("language") var lang : String = "en"
+struct MainMenuView: View {
+    @Environment(\.colorScheme) var scheme
+    @State var isDark : Bool = false
+    @State var maxTurn : Int = 8
     @State var hasUser : Bool = false
-    
     @State var userName : String = ""
-    @State var highScore : Int = 0
+    @State var onGameView : Bool = false
+    
     
     @State var game : Game = Game()
-    @State var showTutorial : Bool = false
-    
-    
-    
+    @State var userList : [String : Int] = UserDefaults.standard.object(forKey: "users") as? [String : Int] ?? [:]
+
+
     var body: some View {
         
         
@@ -30,7 +28,7 @@ struct ContentView: View {
                 VStack {
                     // Logo
                     HStack{
-                        if(isDark){
+                        if(scheme == .dark){
                             Image("dice_logo")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
@@ -60,47 +58,43 @@ struct ContentView: View {
                     // NavLink
                     VStack {
                         Text("Username: \(userName)")
-                            .font(.custom("coiny-regular", size: 25))
+                            .font(.custom("Supfun", size: 30))
                             .foregroundColor(Color("dark"))
-                        Text("Highscore: \(highScore)")
-                            .font(.custom("coiny-regular", size: 25))
+                        Text("Highscore: \(getHighScore(userName: userName))")
+                            .font(.custom("Supfun", size: 30))
                             .foregroundColor(Color("dark"))
-                        NavigationLink {
-                            GameView(maxTurn: maxTurn, userName: userName, game: $game, highScore: $highScore)
+                        
+                        Button {
+                            onGameView = true
                             
                         } label: {
-                            MainMenuButton(textLabel: "continue", disabled: !game.hasStart)
+                            MainMenuButton(textLabel: "CONTINUE", disabled: !game.hasStart)
                         }.disabled(!game.hasStart)
                         
                         
-                        NavigationLink {
-                            GameView(maxTurn: maxTurn, userName: userName, game: $game, highScore: $highScore)
-                        } label: {
-                            MainMenuButton(textLabel: "newGame", disabled: false)
-                        }
-                        .simultaneousGesture(TapGesture().onEnded {
+                        Button {
                             game = Game()
-                        })
-                        
-                        NavigationLink {
-                            LeaderboardView(userName: userName)
+                            onGameView = true
                         } label: {
-                            MainMenuButton(textLabel: "leaderboard", disabled: false)
+                            MainMenuButton(textLabel: "NEW GAME", disabled: false)
                         }
                         
                         NavigationLink {
-                            SettingView(isDark: $isDark, maxTurn: $maxTurn, hasUser: $hasUser)
+                            LeaderboardView()
                         } label: {
-                            MainMenuButton(textLabel: "setting", disabled: false)
+                            MainMenuButton(textLabel: "LEADERBOARD", disabled: false)
+                        }
+                        
+                        NavigationLink {
+                            SettingView(isDark: $isDark, maxTurn: $maxTurn)
+                        } label: {
+                            MainMenuButton(textLabel: "SETTING", disabled: false)
                         }
                         
                         Button {
-                            showTutorial.toggle()
+                            
                         } label: {
-                            MainMenuButton(textLabel: "how2play", disabled: false)
-                        }.sheet(isPresented: $showTutorial) {
-                            TutorialView()
-                                .preferredColorScheme(isDark ? .dark : .light)
+                            MainMenuButton(textLabel: "HOW TO PLAY", disabled: false)
                         }
                     }
                     .padding(.horizontal, 20)
@@ -108,31 +102,35 @@ struct ContentView: View {
                 }
             }
             
+            if(onGameView){
+                GameView(maxTurn: maxTurn, userName: userName, game: $game)
+            }
+            
             if(!hasUser){
                 UserNameModal(userName: $userName) {
-                    var userList = getUsers()
+                    
                     if(userName != ""){
+                        
                         if((userList[userName] == nil)){
-                            highScore = 0
                             userList[userName] = 0
-                            saveUsers(userList: userList)
+                            UserDefaults.standard.set(userList, forKey: "users")
                         }
                         let loaded = loadGame(userName: userName)
                         if(loaded != nil){
                             game = loaded!
-                            highScore = getHighScore(userName: userName)
                         }
+                        
                         hasUser = true
                     }
                 }
             }
         }
-        .environment(\.colorScheme, isDark ? .dark : .light)
+        .preferredColorScheme(isDark ? .dark : .light)
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct MainMenuView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        MainMenuView()
     }
 }

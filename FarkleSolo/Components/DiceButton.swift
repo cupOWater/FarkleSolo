@@ -26,7 +26,7 @@ struct DiceButton: View {
                         RoundedRectangle(cornerRadius: 25)
                         .stroke(.yellow, lineWidth: 10)}
                 }
-                .opacity(game.used[index] || !game.hasStart ? 0.5 : 1)
+                .opacity(game.used[index] || !game.hasStart ? 0 : 1)
         }
         .disabled(game.used[index] || !game.hasStart)
     }

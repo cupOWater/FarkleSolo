@@ -9,7 +9,8 @@ import SwiftUI
 
 
 struct MainMenuButton: View {
-    
+    @AppStorage("language") var lang : String = "en"
+
     let textLabel : String
     let disabled : Bool
     @State var width : CGFloat = 400
@@ -25,9 +26,9 @@ struct MainMenuButton: View {
                 RoundedRectangle(cornerRadius: 20, style: .continuous)
                     .fill(backgroundColor)
                     
-                Text(textLabel)
+                Text(textLabel.localized(lang: lang))
                     .padding()
-                    .font(.custom("Supfun",size: 50))
+                    .font(.custom("coiny-regular",size: 50))
                     .minimumScaleFactor(0.01)
                     .foregroundColor(textColor)
             }

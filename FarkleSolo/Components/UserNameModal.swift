@@ -9,6 +9,7 @@ import SwiftUI
 
 
 struct UserNameModal: View {
+    @AppStorage("language") var lang : String = "en"
     @Binding var userName : String
     var confirmUser : () -> Void
     
@@ -23,11 +24,12 @@ struct UserNameModal: View {
                 .opacity(0.3)
             
             VStack{
-                Text("WHO ARE YOU?")
-                    .font(.custom("Supfun", size: 50))
+                Text("WHO ARE YOU?".localized(lang: lang))
+                    .font(.custom("coiny-regular", size: 40))
                     .foregroundColor(.black)
+                    .padding(.bottom, -1)
                 TextField("Username", text: $userName)
-                    .font(.custom("Supfun", size: 40))
+                    .font(.custom("coiny-regular", size: 35))
                     .multilineTextAlignment(.center)
                     .background(RoundedRectangle(cornerRadius: 10).fill(.white))
                     .overlay{RoundedRectangle(cornerRadius: 10).stroke(.gray)}

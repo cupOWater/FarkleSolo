@@ -16,14 +16,16 @@
 		1F7574B02A909E4A006E5943 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7574AF2A909E4A006E5943 /* GameView.swift */; };
 		1F7574B22A90B14A006E5943 /* PauseModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7574B12A90B14A006E5943 /* PauseModal.swift */; };
 		1F7574B62A90BC7A006E5943 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7574B52A90BC7A006E5943 /* SettingView.swift */; };
-		1F7574B82A90C6AB006E5943 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7574B72A90C6AB006E5943 /* User.swift */; };
 		1F7574BB2A90C6D0006E5943 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7574BA2A90C6D0006E5943 /* Game.swift */; };
+		1FD5D3892A93C51100F758CC /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD5D3882A93C51000F758CC /* TutorialView.swift */; };
+		1FD5D38D2A94890500F758CC /* AchivementNoti.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD5D38C2A94890500F758CC /* AchivementNoti.swift */; };
+		1FD5D38F2A94B90200F758CC /* AchievementList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD5D38E2A94B90100F758CC /* AchievementList.swift */; };
+		1FD5D39B2A94D02600F758CC /* coiny-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1FD5D39A2A94D02600F758CC /* coiny-regular.ttf */; };
+		1FD5D39C2A94D66D00F758CC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1FD5D39E2A94D66D00F758CC /* Localizable.strings */; };
 		1FE60C1B2A91ADB20003625A /* EndGameModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE60C1A2A91ADB20003625A /* EndGameModal.swift */; };
 		1FE60C1D2A91E5620003625A /* UserNameModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE60C1C2A91E5620003625A /* UserNameModal.swift */; };
-		1FE60C1F2A91EFD20003625A /* GameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE60C1E2A91EFD20003625A /* GameData.swift */; };
+		1FE60C1F2A91EFD20003625A /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE60C1E2A91EFD20003625A /* Helper.swift */; };
 		1FE60C232A91F5410003625A /* LeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE60C222A91F5410003625A /* LeaderboardView.swift */; };
-		1FE60C252A9210360003625A /* user.json in Resources */ = {isa = PBXBuildFile; fileRef = 1FE60C242A9210360003625A /* user.json */; };
-		1FE60C272A933C710003625A /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE60C262A933C710003625A /* Test.swift */; };
 		1FE60C292A9340F40003625A /* DiceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE60C282A9340F40003625A /* DiceButton.swift */; };
 /* End PBXBuildFile section */
 
@@ -39,14 +41,17 @@
 		1F7574AF2A909E4A006E5943 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		1F7574B12A90B14A006E5943 /* PauseModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseModal.swift; sourceTree = "<group>"; };
 		1F7574B52A90BC7A006E5943 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
-		1F7574B72A90C6AB006E5943 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		1F7574BA2A90C6D0006E5943 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		1FD5D3882A93C51000F758CC /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
+		1FD5D38C2A94890500F758CC /* AchivementNoti.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchivementNoti.swift; sourceTree = "<group>"; };
+		1FD5D38E2A94B90100F758CC /* AchievementList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementList.swift; sourceTree = "<group>"; };
+		1FD5D39A2A94D02600F758CC /* coiny-regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "coiny-regular.ttf"; sourceTree = "<group>"; };
+		1FD5D39D2A94D66D00F758CC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1FD5D39F2A94D69600F758CC /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1FE60C1A2A91ADB20003625A /* EndGameModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndGameModal.swift; sourceTree = "<group>"; };
 		1FE60C1C2A91E5620003625A /* UserNameModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameModal.swift; sourceTree = "<group>"; };
-		1FE60C1E2A91EFD20003625A /* GameData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameData.swift; sourceTree = "<group>"; };
+		1FE60C1E2A91EFD20003625A /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		1FE60C222A91F5410003625A /* LeaderboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardView.swift; sourceTree = "<group>"; };
-		1FE60C242A9210360003625A /* user.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = user.json; sourceTree = "<group>"; };
-		1FE60C262A933C710003625A /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		1FE60C282A9340F40003625A /* DiceButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -88,6 +93,7 @@
 				1F5FFFDE2A8626520009F7C5 /* FarkleSoloApp.swift */,
 				1F5FFFE22A8626550009F7C5 /* Assets.xcassets */,
 				1F5FFFE42A8626550009F7C5 /* Preview Content */,
+				1FD5D39E2A94D66D00F758CC /* Localizable.strings */,
 			);
 			path = FarkleSolo;
 			sourceTree = "<group>";
@@ -103,6 +109,7 @@
 		1F7574AB2A90996E006E5943 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
+				1FD5D39A2A94D02600F758CC /* coiny-regular.ttf */,
 				1F7574AC2A9099A2006E5943 /* Supfun.otf */,
 			);
 			path = fonts;
@@ -115,7 +122,7 @@
 				1F5FFFE02A8626520009F7C5 /* ContentView.swift */,
 				1F7574B52A90BC7A006E5943 /* SettingView.swift */,
 				1FE60C222A91F5410003625A /* LeaderboardView.swift */,
-				1FE60C262A933C710003625A /* Test.swift */,
+				1FD5D3882A93C51000F758CC /* TutorialView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -128,6 +135,8 @@
 				1FE60C1A2A91ADB20003625A /* EndGameModal.swift */,
 				1FE60C1C2A91E5620003625A /* UserNameModal.swift */,
 				1FE60C282A9340F40003625A /* DiceButton.swift */,
+				1FD5D38C2A94890500F758CC /* AchivementNoti.swift */,
+				1FD5D38E2A94B90100F758CC /* AchievementList.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -135,10 +144,8 @@
 		1F7574B92A90C6B2006E5943 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				1F7574B72A90C6AB006E5943 /* User.swift */,
-				1FE60C242A9210360003625A /* user.json */,
 				1F7574BA2A90C6D0006E5943 /* Game.swift */,
-				1FE60C1E2A91EFD20003625A /* GameData.swift */,
+				1FE60C1E2A91EFD20003625A /* Helper.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -185,6 +192,7 @@
 			knownRegions = (
 				en,
 				Base,
+				vi,
 			);
 			mainGroup = 1F5FFFD22A8626520009F7C5;
 			productRefGroup = 1F5FFFDC2A8626520009F7C5 /* Products */;
@@ -201,9 +209,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FE60C252A9210360003625A /* user.json in Resources */,
 				1F5FFFE62A8626550009F7C5 /* Preview Assets.xcassets in Resources */,
+				1FD5D39C2A94D66D00F758CC /* Localizable.strings in Resources */,
 				1F7574AD2A9099A2006E5943 /* Supfun.otf in Resources */,
+				1FD5D39B2A94D02600F758CC /* coiny-regular.ttf in Resources */,
 				1F5FFFE32A8626550009F7C5 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -221,12 +230,13 @@
 				1FE60C1D2A91E5620003625A /* UserNameModal.swift in Sources */,
 				1FE60C232A91F5410003625A /* LeaderboardView.swift in Sources */,
 				1F7574B22A90B14A006E5943 /* PauseModal.swift in Sources */,
-				1FE60C272A933C710003625A /* Test.swift in Sources */,
-				1FE60C1F2A91EFD20003625A /* GameData.swift in Sources */,
+				1FD5D38F2A94B90200F758CC /* AchievementList.swift in Sources */,
+				1FE60C1F2A91EFD20003625A /* Helper.swift in Sources */,
+				1FD5D3892A93C51100F758CC /* TutorialView.swift in Sources */,
 				1F7574B62A90BC7A006E5943 /* SettingView.swift in Sources */,
 				1F7574B02A909E4A006E5943 /* GameView.swift in Sources */,
 				1F5FFFDF2A8626520009F7C5 /* FarkleSoloApp.swift in Sources */,
-				1F7574B82A90C6AB006E5943 /* User.swift in Sources */,
+				1FD5D38D2A94890500F758CC /* AchivementNoti.swift in Sources */,
 				1FE60C292A9340F40003625A /* DiceButton.swift in Sources */,
 				1F7574BB2A90C6D0006E5943 /* Game.swift in Sources */,
 			);
@@ -234,11 +244,24 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		1FD5D39E2A94D66D00F758CC /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1FD5D39D2A94D66D00F758CC /* en */,
+				1FD5D39F2A94D69600F758CC /* vi */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		1F5FFFE72A8626550009F7C5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -299,6 +322,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";

@@ -8,15 +8,18 @@
 import SwiftUI
 
 struct EndGameModal: View {
-    
+    @AppStorage("language") var lang : String = "en"
+
     let score : Int
     let neededScore : Int
+    let newHighScore : Bool
     let dimiss : () -> Void
     let nextStage : () -> Void
     
-    init(score: Int, neededScore: Int, dimiss: @escaping () -> Void, nextStage: @escaping () -> Void) {
+    init(score: Int, neededScore: Int, newHighScore: Bool, dimiss: @escaping () -> Void, nextStage: @escaping () -> Void) {
         self.score = score
         self.neededScore = neededScore
+        self.newHighScore = newHighScore
         self.dimiss = dimiss
         self.nextStage = nextStage
     }
@@ -27,13 +30,24 @@ struct EndGameModal: View {
                 .opacity(0.3)
             
             VStack{
-                Text(score >= neededScore ? "VICTORY" : "LOSE")
-                    .font(.custom("Supfun", size: 70))
-                    .foregroundColor(score >= neededScore ? .yellow : .black)
+                Text((score >= neededScore ? "VICTORY" : "LOSE").localized(lang: lang))
+                    .font(.custom("coiny-regular", size: 60))
+                    .foregroundColor(score >= neededScore ? .orange : .black)
+                    .padding(.bottom, -70)
                 
                 Text("\(String(score)) / \(String(neededScore))")
-                    .font(.custom("Supfun", size: 50))
+                    .font(.custom("coiny-regular", size: 45))
                     .foregroundColor(.black)
+                
+                if(newHighScore){
+                    HStack {
+                        Image(systemName: "star.fill")
+                        Text("New Highscore")
+                            .font(.custom("Supfun", size: 30))
+                        Image(systemName: "star.fill")
+                    }
+                    .foregroundColor(.orange)
+                }
                 
                 HStack {
                     Spacer()
@@ -46,7 +60,7 @@ struct EndGameModal: View {
                     Button {
                         nextStage()
                     } label: {
-                        MainMenuButton(textLabel: "Next Stage", disabled: score < neededScore, textColor: .white, backgroundColor: .blue)
+                        MainMenuButton(textLabel: "Next Stage", disabled: score < neededScore, textColor: .white, backgroundColor: .orange)
                     }
                     .disabled(score < neededScore)
                     Spacer()
@@ -70,7 +84,7 @@ struct EndGameModal: View {
 
 struct EndGameModal_Previews: PreviewProvider {
     static var previews: some View {
-        EndGameModal(score: 10, neededScore: 100) {
+        EndGameModal(score: 200, neededScore: 100, newHighScore: true) {
             
         } nextStage: {
             

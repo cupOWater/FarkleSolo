@@ -42,7 +42,6 @@
 		1F5FFFE52A8626550009F7C5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1F5FFFEC2A908C820009F7C5 /* MainMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuButton.swift; sourceTree = "<group>"; };
 		1F7574AC2A9099A2006E5943 /* Supfun.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Supfun.otf; sourceTree = "<group>"; };
-		1F7574AE2A909AE4006E5943 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		1F7574AF2A909E4A006E5943 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		1F7574B12A90B14A006E5943 /* PauseModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseModal.swift; sourceTree = "<group>"; };
 		1F7574B52A90BC7A006E5943 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
@@ -99,7 +98,6 @@
 				1F7574B92A90C6B2006E5943 /* Models */,
 				1F7574B42A90B712006E5943 /* Components */,
 				1F7574B32A90B6D1006E5943 /* Views */,
-				1F7574AE2A909AE4006E5943 /* Info.plist */,
 				1F7574AB2A90996E006E5943 /* fonts */,
 				1F5FFFDE2A8626520009F7C5 /* FarkleSoloApp.swift */,
 				1F5FFFE22A8626550009F7C5 /* Assets.xcassets */,

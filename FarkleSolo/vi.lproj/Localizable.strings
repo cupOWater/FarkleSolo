@@ -38,10 +38,12 @@
 "Hands" = "Tay";
 "Rules" = "Luật";
 "Next Turn" = "Lượt Tiếp";
+"Stage Played" = "Màn Chơi";
+"Stage Won" = "Màn Thắng";
 
 "rule1" = "Đỗ 6 xí ngầu để bắt đầu";
 "rule2" = "Từ các xí ngầu đỗ, chọn Tay của bạn";
 "rule3" = "Xí ngầu được chọn sẽ được lấy ra, và điểm sẽ được cộng vào vòng";
-"rule4" = "Đỗ các xí ngầu còn lại, chọn Tay, nhận điểm, lặp lại";
+"rule4" = "Đỗ các xí ngầu còn lại, chọn Tay, nhận điểm, lặp lại đến khi không thể chọn tiếp";
 "rule5" = "Nếu tất cả xí ngầu được lấy ra, bạn sẽ nhận thêm 6 xí ngầu khác";
 "rule6" = "Khi bạn qua hết lượt, bạn qua màn tiếp theo nếu đủ điểm";

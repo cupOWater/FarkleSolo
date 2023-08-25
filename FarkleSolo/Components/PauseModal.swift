@@ -34,7 +34,7 @@ struct PauseModal: View {
                     Button {
                         isPaused = false
                     } label: {
-                        MainMenuButton(textLabel: "Resume", disabled: false, textColor: .white, backgroundColor: .blue)
+                        MainMenuButton(textLabel: "Resume", disabled: false, textColor: .white, backgroundColor: .orange)
                     }
                     Button {
                         // How to play view

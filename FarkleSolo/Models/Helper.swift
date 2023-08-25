@@ -44,6 +44,44 @@ func saveUsers(userList : [String : Int]) {
     UserDefaults.standard.set(userList, forKey: "users")
 }
 
+func getStats() -> [String : [Int]] {
+    let stats = UserDefaults.standard.object(forKey: "stat") as? [String:[Int]] ?? [:]
+    return stats
+}
+
+func saveStats(stats : [String : [Int]]){
+    UserDefaults.standard.set(stats, forKey: "stat")
+}
+
+func getStat(userName : String) -> [Int] {
+    // Index 0: stages passed, Index 1: stages played
+    var stats = getStats()
+    if(stats[userName] != nil){
+        return stats[userName]!
+    }
+    else {
+        stats[userName] = [0, 0]
+        saveStats(stats: stats)
+        return [0, 0]
+    }
+}
+
+func addStatStagePlayed(userName : String) {
+    var stats = getStats()
+    var stat = getStat(userName: userName)
+    stat[1] += 1
+    stats[userName] = stat
+    saveStats(stats: stats)
+}
+
+func addStatWinStage(userName: String) {
+    var stats = getStats()
+    var stat = getStat(userName: userName)
+    stat[0] += 1
+    stats[userName] = stat
+    saveStats(stats: stats)
+}
+
 
 func getAchievementList() -> [String : [String]]{
     return UserDefaults.standard.object(forKey: "achievements") as? [String:[String]] ?? ["stage2" : [], "stage5" : [], "500pts" : [], "2000pts" : []]

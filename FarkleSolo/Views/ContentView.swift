@@ -116,11 +116,16 @@ struct ContentView: View {
                             highScore = 0
                             userList[userName] = 0
                             saveUsers(userList: userList)
+                            game = Game()
                         }
-                        let loaded = loadGame(userName: userName)
-                        if(loaded != nil){
-                            game = loaded!
+                        else{
                             highScore = getHighScore(userName: userName)
+                            let loaded = loadGame(userName: userName)
+                            if(loaded != nil){
+                                game = loaded!
+                            }else {
+                                game = Game()
+                            }
                         }
                         hasUser = true
                     }

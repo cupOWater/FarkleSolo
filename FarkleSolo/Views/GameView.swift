@@ -117,6 +117,23 @@ struct GameView: View {
                                 }
                             }
                             game.nextTurn()
+                            
+                            if(game.turnCounter > game.maxTurn) {
+                                // WHEN NO TURN LEFT:
+                                addStatStagePlayed(userName: userName)
+                                
+                                // If Win
+                                if (game.totalScore >= game.neededScore) {
+                                    addStatWinStage(userName: userName)
+                                }
+                                
+                                // New High Score
+                                if(game.totalScore > getHighScore(userName: userName)){
+                                    newHighScore = true
+                                    highScore = game.totalScore
+                                    setHighScore(userName: userName, score: game.totalScore)
+                                }
+                            }
                         }
                         
                         game.hasStart = true
@@ -181,12 +198,6 @@ struct GameView: View {
                         playSound(sound: "win", type: "wav")
                     }else {
                         playSound(sound: "lose", type: "wav")
-                    }
-                    
-                    if(game.totalScore > getHighScore(userName: userName)){
-                        newHighScore = true
-                        highScore = game.totalScore
-                        setHighScore(userName: userName, score: game.totalScore)
                     }
                 }
             }

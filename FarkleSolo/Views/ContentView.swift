@@ -30,6 +30,7 @@ struct ContentView: View {
                 VStack {
                     // Logo
                     HStack{
+                        // If darkmode, invert the color
                         if(isDark){
                             Image("dice_logo")
                                 .resizable()
@@ -57,7 +58,7 @@ struct ContentView: View {
                     }
                     .padding(.horizontal)
                     
-                    // NavLink
+                    // NavLinks
                     VStack {
                         Text("Username: \(userName)")
                             .font(.custom("coiny-regular", size: 25))
@@ -65,14 +66,24 @@ struct ContentView: View {
                         Text("Highscore: \(highScore)")
                             .font(.custom("coiny-regular", size: 25))
                             .foregroundColor(Color("dark"))
+                        
+                        // MARK: Continue button
+                        // If there is a started game, the button will be available
                         NavigationLink {
                             GameView(maxTurn: maxTurn, userName: userName, game: $game, highScore: $highScore)
                             
                         } label: {
                             MainMenuButton(textLabel: "continue", disabled: !game.hasStart)
-                        }.disabled(!game.hasStart)
+                        }
+                        .disabled(!game.hasStart)
+                        .simultaneousGesture(TapGesture().onEnded {
+                            if(game.hasStart){
+                                audioPlayer?.stop()
+                            }
+                        })
                         
-                        
+                        // MARK: New game button
+                        // Create a new game object
                         NavigationLink {
                             GameView(maxTurn: maxTurn, userName: userName, game: $game, highScore: $highScore)
                         } label: {
@@ -80,20 +91,25 @@ struct ContentView: View {
                         }
                         .simultaneousGesture(TapGesture().onEnded {
                             game = Game()
+                            audioPlayer?.stop()
                         })
                         
+                        // MARK: Leaderboard button
                         NavigationLink {
                             LeaderboardView(userName: userName)
                         } label: {
                             MainMenuButton(textLabel: "leaderboard", disabled: false)
                         }
                         
+                        // MARK: Setting button
                         NavigationLink {
                             SettingView(isDark: $isDark, maxTurn: $maxTurn, hasUser: $hasUser)
                         } label: {
                             MainMenuButton(textLabel: "setting", disabled: false)
                         }
                         
+                        // MARK: Tutorial button
+                        // Will show a sheet to show user how to play the game
                         Button {
                             showTutorial.toggle()
                         } label: {
@@ -108,10 +124,13 @@ struct ContentView: View {
                 }
             }
             
+            // If there is no user
+            // Display a user modal to ask for a username
             if(!hasUser){
                 UserNameModal(userName: $userName) {
                     var userList = getUsers()
                     if(userName != ""){
+                        // If no user, create a new user with no game and no highscore
                         if((userList[userName] == nil)){
                             highScore = 0
                             userList[userName] = 0
@@ -119,6 +138,7 @@ struct ContentView: View {
                             game = Game()
                         }
                         else{
+                            // If there is a user, set the highscore and the previous game if present
                             highScore = getHighScore(userName: userName)
                             let loaded = loadGame(userName: userName)
                             if(loaded != nil){
@@ -133,6 +153,10 @@ struct ContentView: View {
             }
         }
         .environment(\.colorScheme, isDark ? .dark : .light)
+        .onAppear{
+            // MARK: BG Music
+            playSound(sound: "background", type: "wav", loop: -1)
+        }
     }
 }
 

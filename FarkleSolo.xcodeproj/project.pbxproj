@@ -17,6 +17,7 @@
 		1F7574B22A90B14A006E5943 /* PauseModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7574B12A90B14A006E5943 /* PauseModal.swift */; };
 		1F7574B62A90BC7A006E5943 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7574B52A90BC7A006E5943 /* SettingView.swift */; };
 		1F7574BB2A90C6D0006E5943 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7574BA2A90C6D0006E5943 /* Game.swift */; };
+		1FA184902A9CD5DE005F0E49 /* background.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1FA1848F2A9CD5DE005F0E49 /* background.wav */; };
 		1FD5D3892A93C51100F758CC /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD5D3882A93C51000F758CC /* TutorialView.swift */; };
 		1FD5D38D2A94890500F758CC /* AchivementNoti.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD5D38C2A94890500F758CC /* AchivementNoti.swift */; };
 		1FD5D38F2A94B90200F758CC /* AchievementList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD5D38E2A94B90100F758CC /* AchievementList.swift */; };
@@ -46,6 +47,7 @@
 		1F7574B12A90B14A006E5943 /* PauseModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseModal.swift; sourceTree = "<group>"; };
 		1F7574B52A90BC7A006E5943 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		1F7574BA2A90C6D0006E5943 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		1FA1848F2A9CD5DE005F0E49 /* background.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = background.wav; sourceTree = "<group>"; };
 		1FD5D3882A93C51000F758CC /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
 		1FD5D38C2A94890500F758CC /* AchivementNoti.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchivementNoti.swift; sourceTree = "<group>"; };
 		1FD5D38E2A94B90100F758CC /* AchievementList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementList.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 		1FD5D3A02A9507E000F758CC /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				1FA1848F2A9CD5DE005F0E49 /* background.wav */,
 				1FD5D3A52A950AE400F758CC /* dice.wav */,
 				1FD5D3A72A950C2900F758CC /* win.wav */,
 				1FD5D3A92A950D9800F758CC /* lose.wav */,
@@ -232,6 +235,7 @@
 			files = (
 				1FD5D3AC2A950EA500F758CC /* select2.wav in Resources */,
 				1F5FFFE62A8626550009F7C5 /* Preview Assets.xcassets in Resources */,
+				1FA184902A9CD5DE005F0E49 /* background.wav in Resources */,
 				1FD5D3A82A950C2900F758CC /* win.wav in Resources */,
 				1FD5D3AE2A950EAA00F758CC /* select1.wav in Resources */,
 				1FD5D39C2A94D66D00F758CC /* Localizable.strings in Resources */,

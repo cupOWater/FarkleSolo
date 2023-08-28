@@ -19,6 +19,8 @@ struct AchievementList: View {
     init(userName: String, achievement: String){
         self.userName = userName
         self.achievement = achievement
+        // MARK: Achievement properties
+        // Each achievement includes an image and an achievement message
         switch (achievement) {
         case "stage2":
             achievementHeader = "Reach Stage 2"
@@ -58,6 +60,7 @@ struct AchievementList: View {
                 .padding(.bottom, -5)
                 ScrollView {
                     VStack {
+                        // MARK: List of users that can have achieved this achievement
                         ForEach(achievementList[achievement]!, id: \.self){name in
                             HStack{
                                 Text(name)

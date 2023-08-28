@@ -14,8 +14,9 @@
 
 "language" = "Language";
 "darkMode" = "Dark Mode";
-"turn" = "Turn";
+"turn" = "Turns";
 "logout" = "Logout";
+"settingTip" = "Less Turns will make it harder";
 
 "rule1" = "You start by rolling 6 dice";
 "rule2" = "From the rolled dice, select your Hand(s)";

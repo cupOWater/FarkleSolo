@@ -24,10 +24,13 @@ struct SettingView: View {
                     .font(.custom("coiny-regular", size: 70))
                 Spacer()
                 VStack {
+                    // MARK: Dark Mode Toggle
                     Toggle(isOn: $isDark){
                         Text("darkMode".localized(lang: lang))
                             .font(.custom("coiny-regular", size: 30))
                     }
+                    
+                    // MARK: Change number of turns here
                     HStack {
                         Text("turn".localized(lang: lang))
                             .font(.custom("coiny-regular", size: 30))
@@ -49,6 +52,8 @@ struct SettingView: View {
                             }.fixedSize()
                         }
                     }
+                    
+                    // MARK: Change language here
                     HStack {
                         Text("language".localized(lang: lang))
                             .font(.custom("coiny-regular", size: 30))
@@ -62,7 +67,14 @@ struct SettingView: View {
                         }
 
                     }
+                    
                     Spacer()
+                    Text("settingTip".localized(lang: lang))
+                        .font(.custom("coiny-regular", size: 17))
+                    
+                    // MARK: Logout button
+                    // Logout will change hasUser to false
+                    // Will cause the login modal to show again
                     Button {
                         hasUser = false
                         dismiss()

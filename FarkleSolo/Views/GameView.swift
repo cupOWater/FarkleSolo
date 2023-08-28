@@ -11,6 +11,7 @@ struct GameView: View {
     @Environment(\.dismiss) private var dismiss
     @AppStorage("language") var lang : String = "en"
 
+    // Game state
     let maxTurn : Int
     let userName : String
     @State var isPaused = false
@@ -19,9 +20,12 @@ struct GameView: View {
     @State var isRolling : CGFloat = 0
     @State var newHighScore = false
     @State var newAchievement : [String] = []
+    
+    // Animation for the achievement notification
     @State var achieveOffset : CGFloat = -10
     @State var achieveOpac : CGFloat = 0
     
+    // Animation for the shake of the dice
     let animation = Animation.default.repeatCount(5).speed(10)
     
     
@@ -30,6 +34,7 @@ struct GameView: View {
             VStack{
                 HStack{
                     Spacer()
+                    // MARK: Pause button
                     Button {
                         isPaused = true
                     } label: {
@@ -44,12 +49,14 @@ struct GameView: View {
                 Spacer()
             }
             VStack {
-                
+                // MARK: Game stat display
+                // Stage number
                 Text("\("Stage".localized(lang: lang)) \(String(game.stage))")
                     .font(.custom("coiny-regular", size: 35))
                     .padding(.bottom, -48)
                 
                 HStack{
+                    // Number of turns remaining
                     Text("\("turn".localized(lang: lang)): ")
                         .font(.custom("coiny-regular", size: 30))
                     Text("\(game.turnCounter > game.maxTurn ? String(game.maxTurn) : String(game.turnCounter)) / \(String(game.maxTurn))")
@@ -58,6 +65,8 @@ struct GameView: View {
                 .lineLimit(1)
                 .minimumScaleFactor(0.1)
                 .padding(.bottom, -35)
+                
+                // Total score and Round score
                 HStack{
                     Text("\("Total Score".localized(lang: lang)): ")
                         .font(.custom("coiny-regular", size: 25))
@@ -73,6 +82,7 @@ struct GameView: View {
                 }
                 
                 VStack{
+                    // Display 6 dice
                     ForEach(0..<3) { index in
                         let idxLeft = index * 2
                         let idxRight = index * 2 + 1
@@ -91,8 +101,12 @@ struct GameView: View {
                     }
                 }
                 
-                
+                // MARK: Play buttons
+                // Each time button is pressed, play a sound and save the game
                 HStack {
+                    // MARK: Select button
+                    // Confirm a hand and add the score when pressed
+                    // Only available if the Hand is valid
                     Button {
                         playSound(sound: "select2", type: "wav")
                         game.canScore = false
@@ -104,8 +118,13 @@ struct GameView: View {
                         MainMenuButton(textLabel: "Select", disabled: !game.canScore, width: 150, textColor: .white, backgroundColor: .orange)
                     }.disabled(!game.canScore)
 
+                    
+                    // MARK: Roll/ Next turn button
+                    // Roll the dice if the game start or if the user has selected the Hand(s)
+                    // If no hand is available left, the user can move to the next turn
                     Button {
                         if !game.canContinue{
+                            // Check for turn achievements
                             if(game.turnScore >= 500){
                                 if (addUserAchievement(userName: userName, achievement: "500pts")){
                                     newAchievement.append("500pts")
@@ -138,6 +157,8 @@ struct GameView: View {
                         
                         game.hasStart = true
                         game.deSelectUnused()
+                        
+                        // If no dice on table, give player new dice
                         let usedAll = game.checkUsedAll()
                         if usedAll {
                             game.resetUsed()
@@ -172,6 +193,9 @@ struct GameView: View {
             }
             .padding(.top, 15)
 
+            // MARK: Result Modal
+            // If no turn remaining, check game result
+            // Total score >= Needed score => Win
             if(game.turnCounter > game.maxTurn){
                 EndGameModal(score: game.totalScore, neededScore: game.neededScore, newHighScore: newHighScore) {
                     if(game.totalScore < game.neededScore){
@@ -202,12 +226,16 @@ struct GameView: View {
                 }
             }
             
+            // MARK: Pause status
             if(isPaused){
                 PauseModal(isPaused: $isPaused) {
                     dismiss()
                 }
             }
             
+            // MARK: Achievement Display
+            // While there is an achievement, display the notification
+            // After a bit, hide the notification
             if(!newAchievement.isEmpty) {
                 VStack {
                     ForEach(newAchievement, id: \.self) { a in
@@ -239,6 +267,10 @@ struct GameView: View {
             if !game.hasStart {
                 game.maxTurn = maxTurn
             }
+        }
+        .onDisappear{
+            // Start BG Music again
+            playSound(sound: "background", type: "wav", loop: -1)
         }
     }
         

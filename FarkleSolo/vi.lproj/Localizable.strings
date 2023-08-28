@@ -40,6 +40,7 @@
 "Next Turn" = "Lượt Tiếp";
 "Stage Played" = "Màn Chơi";
 "Stage Won" = "Màn Thắng";
+"settingTip" = "Ít lượt sẽ làm game khó hơn";
 
 "rule1" = "Đỗ 6 xí ngầu để bắt đầu";
 "rule2" = "Từ các xí ngầu đỗ, chọn Tay của bạn";

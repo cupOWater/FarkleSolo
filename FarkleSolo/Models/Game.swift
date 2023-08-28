@@ -7,13 +7,15 @@
 
 import Foundation
 
+
+// Codable and Hashable so it can be encode and decode into type Data for storing
 struct Game : Codable, Hashable{
+    // MARK: Game properties
     var hasStart : Bool = false
     var canContinue : Bool = true
     var canRoll : Bool = true
     var canScore : Bool = false
     var stage : Int = 1
-    
     var turnScore : Int = 0
     var totalScore : Int = 0
     var neededScore : Int = 1000
@@ -23,7 +25,7 @@ struct Game : Codable, Hashable{
     var selected : [Bool] = [false, false, false, false, false, false]
     var used : [Bool] = [false, false, false, false, false, false]
     
-   
+   // Add the selected dice index into the selected array
     func getSelected() -> [Int] {
         var result : [Int] = []
         for i in 0..<selected.count {
@@ -34,6 +36,7 @@ struct Game : Codable, Hashable{
         return result
     }
     
+    // When the select button press, the score for the Hand will be added to the turn score
     mutating func confirmHand() {
         turnScore += getScore(selectedArr: getSelected())
         for i in 0..<selected.count {
@@ -43,6 +46,7 @@ struct Game : Codable, Hashable{
         }
     }
     
+    // Change dice value to random number between 1 and 6
     mutating func rollDice(){
         for i in 0..<rolledDice.count {
             if(!used[i]){
@@ -51,6 +55,7 @@ struct Game : Codable, Hashable{
         }
     }
 
+    // Check to see if all dice have been used
     func checkUsedAll() -> Bool{
         var allUsed = true
         for i in 0..<used.count{
@@ -61,14 +66,14 @@ struct Game : Codable, Hashable{
         return allUsed
     }
     
+    // For reseting used and selected arrays
     mutating func resetUsed() {
         used = [false, false, false, false, false, false]
     }
-    
     mutating func resetSelect() {
         selected = [false, false, false, false, false, false]
     }
-    
+    // If user press select and the dice is not used, all selected dice will be deselect
     mutating func deSelectUnused() {
         for i in 0..<used.count {
             if(!used[i]){
@@ -77,6 +82,7 @@ struct Game : Codable, Hashable{
         }
     }
     
+    // Reset some property for next turn
     mutating func nextTurn(){
         turnCounter += 1
         totalScore += turnScore
@@ -85,7 +91,7 @@ struct Game : Codable, Hashable{
         resetSelect()
     }
     
-    
+    // A Recusive to check all available move using the available dice
     mutating private func checkAvailableRecursive(checker : [Bool]) {
         if(canContinue){
             return
@@ -112,11 +118,14 @@ struct Game : Codable, Hashable{
         }
     }
     
+    // To check the available moves, if there is a move available
+    // the canContinue will be changed to true in the recursive
     mutating func checkAvailableMove(){
         canContinue = false
         checkAvailableRecursive(checker: [])
     }
     
+    // check if win
     func checkWin() -> Bool{
         if(totalScore >= neededScore){
             return true
@@ -124,6 +133,7 @@ struct Game : Codable, Hashable{
         return false
     }
     
+    // Reset some property to prepare for next stage
     mutating func nextStage() {
         stage += 1
         totalScore = 0
@@ -133,6 +143,8 @@ struct Game : Codable, Hashable{
         resetSelect()
     }
     
+    // Check the hand and get the score
+    // MARK: Check Hands for score
     func getScore(selectedArr : [Int]) -> Int {
         let sortedHand = selectedArr.sorted()
         let count = sortedHand.count
@@ -152,7 +164,7 @@ struct Game : Codable, Hashable{
             return 0
         }
         
-        // of a kind
+        // many of a kind
         if(count >= 3){
             var val = sortedHand[0]
             var valid = true

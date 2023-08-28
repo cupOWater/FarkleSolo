@@ -23,12 +23,14 @@ struct LeaderboardView: View {
         ZStack{
             ScrollView {
                 VStack{
+                    // MARK: The Leaderboard for highscores
                     VStack{
                         Text("leaderboard".localized(lang: lang))
                             .font(.custom("coiny-regular", size: 45))
                         Spacer()
                         ScrollView {
                             VStack {
+                                // Sort the userList by highscore, highest score first
                                 ForEach (userList.sorted {$0.1 > $1.1}, id: \.key) {key, value in
                                     HStack {
                                         Text("\(key)")
@@ -52,6 +54,8 @@ struct LeaderboardView: View {
                         .frame(height: 300)
                         .padding()
                         
+                        
+                        // MARK: Stat display
                         Text("Stats".localized(lang: lang))
                             .font(.custom("coiny-regular", size: 35))
                             .underline()
@@ -74,6 +78,8 @@ struct LeaderboardView: View {
                         .padding(.horizontal, 20)
                         .frame(maxWidth: 400)
                         
+                        
+                        // MARK: Achievements display
                         Text("Achievements".localized(lang: lang))
                             .font(.custom("coiny-regular", size: 35))
                             .underline()

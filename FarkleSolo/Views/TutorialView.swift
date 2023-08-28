@@ -37,6 +37,8 @@ struct TutorialView: View {
                         Spacer()
                     }
                     
+                    
+                    // MARK: Display the HANDS here
                     Group {
                         Group {
                             Image("dice_1")
@@ -192,7 +194,7 @@ struct TutorialView: View {
                             .font(.custom("coiny-regular", size: 40))
                         Spacer()
                     }
-                    
+                    // MARK: Display the RULES here
                     VStack(alignment: .leading) {
                         HStack (alignment: .top) {
                             Text("\u{2022}  ")

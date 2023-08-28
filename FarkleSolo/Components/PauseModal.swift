@@ -37,7 +37,7 @@ struct PauseModal: View {
                         MainMenuButton(textLabel: "Resume", disabled: false, textColor: .white, backgroundColor: .orange)
                     }
                     Button {
-                        // How to play view
+                        // How to play sheet
                         showTutorial.toggle()
                     } label: {
                         MainMenuButton(textLabel: "Game Rule", disabled: false, textColor: .white, backgroundColor: .black)

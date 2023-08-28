@@ -12,6 +12,7 @@ struct AchivementNoti: View {
 
     let achievementMsg : String
     init(achievement: String) {
+        // Different string for different achievement
         self.achievementMsg = {
             switch (achievement) {
             case "stage2":

@@ -15,6 +15,7 @@ struct DiceButton: View {
     var body: some View {
         Button {
             playSound(sound: "select1", type: "wav")
+            // change the game selected array when clicked
             game.selected[index].toggle()
             game.canScore = game.getScore(selectedArr: game.getSelected()) > 0 ? true : false
         } label: {

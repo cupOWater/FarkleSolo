@@ -1,9 +1,16 @@
-//
-//  TutorialView.swift
-//  FarkleSolo
-//
-//  Created by MacNCheese on 21/08/2023.
-//
+/*
+  RMIT University Vietnam
+  Course: COSC2659 iOS Development
+  Semester: 2023B
+  Assessment: Assignment 2
+  Author: Huynh Ky Thanh
+  ID: 3884734
+  Created  date: 11/08/2023
+  Last modified: 01/09/2023
+  Acknowledgement:
+ 
+*/
+
 
 import SwiftUI
 

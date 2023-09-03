@@ -1,9 +1,15 @@
-//
-//  UserData.swift
-//  FarkleSolo
-//
-//  Created by MacNCheese on 20/08/2023.
-//
+/*
+  RMIT University Vietnam
+  Course: COSC2659 iOS Development
+  Semester: 2023B
+  Assessment: Assignment 2
+  Author: Huynh Ky Thanh
+  ID: 3884734
+  Created  date: 11/08/2023
+  Last modified: 01/09/2023
+  Acknowledgement:
+    dijipiji. (2018, December 5). How can I change locale programmatically with Swift [Online forum post]. StackOverflow. https://stackoverflow.com/a/31744226
+*/
 
 import Foundation
 
@@ -62,6 +68,7 @@ func getHighScore(userName : String) -> Int{
         return 0
     }
 }
+
 
 // MARK: For changing "stat" UserDefaults
 func getStats() -> [String : [Int]] {

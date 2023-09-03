@@ -1,14 +1,22 @@
-//
-//  Game.swift
-//  FarkleSolo
-//
-//  Created by MacNCheese on 19/08/2023.
-//
+/*
+ RMIT University Vietnam
+ Course: COSC2659 iOS Development
+ Semester: 2023B
+ Assessment: Assignment 2
+ Author: Huynh Ky Thanh
+ ID: 3884734
+ Created  date: 11/08/2023
+ Last modified: 01/09/2023
+ Acknowledgement:
+ 
+ */
+
 
 import Foundation
 
 
 // Codable and Hashable so it can be encode and decode into type Data for storing
+// Since this Game struct cannot be stored directly into UserDefaults
 struct Game : Codable, Hashable{
     // MARK: Game properties
     var hasStart : Bool = false
@@ -25,7 +33,8 @@ struct Game : Codable, Hashable{
     var selected : [Bool] = [false, false, false, false, false, false]
     var used : [Bool] = [false, false, false, false, false, false]
     
-   // Add the selected dice index into the selected array
+    // Add the selected dice index into the selected array
+    // MARK: Get selected dice
     func getSelected() -> [Int] {
         var result : [Int] = []
         for i in 0..<selected.count {
@@ -37,6 +46,7 @@ struct Game : Codable, Hashable{
     }
     
     // When the select button press, the score for the Hand will be added to the turn score
+    // MARK: Confirming current Hand
     mutating func confirmHand() {
         turnScore += getScore(selectedArr: getSelected())
         for i in 0..<selected.count {
@@ -47,6 +57,7 @@ struct Game : Codable, Hashable{
     }
     
     // Change dice value to random number between 1 and 6
+    // MARK: Roll dice
     mutating func rollDice(){
         for i in 0..<rolledDice.count {
             if(!used[i]){
@@ -54,8 +65,9 @@ struct Game : Codable, Hashable{
             }
         }
     }
-
+    
     // Check to see if all dice have been used
+    // MARK: Check Used
     func checkUsedAll() -> Bool{
         var allUsed = true
         for i in 0..<used.count{
@@ -67,6 +79,7 @@ struct Game : Codable, Hashable{
     }
     
     // For reseting used and selected arrays
+    // MARK: Reset used and select
     mutating func resetUsed() {
         used = [false, false, false, false, false, false]
     }
@@ -83,6 +96,7 @@ struct Game : Codable, Hashable{
     }
     
     // Reset some property for next turn
+    // MARK: Next turn
     mutating func nextTurn(){
         turnCounter += 1
         totalScore += turnScore
@@ -92,6 +106,7 @@ struct Game : Codable, Hashable{
     }
     
     // A Recusive to check all available move using the available dice
+    // MARK: Check available moves
     mutating private func checkAvailableRecursive(checker : [Bool]) {
         if(canContinue){
             return
@@ -125,7 +140,8 @@ struct Game : Codable, Hashable{
         checkAvailableRecursive(checker: [])
     }
     
-    // check if win
+    
+    // MARK: Check win
     func checkWin() -> Bool{
         if(totalScore >= neededScore){
             return true
@@ -134,6 +150,7 @@ struct Game : Codable, Hashable{
     }
     
     // Reset some property to prepare for next stage
+    // MARK: Next Stage
     mutating func nextStage() {
         stage += 1
         totalScore = 0
@@ -194,7 +211,7 @@ struct Game : Codable, Hashable{
         return 0
         
     }
-
+    
 }
 
 

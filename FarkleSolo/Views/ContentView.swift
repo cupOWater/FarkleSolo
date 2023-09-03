@@ -86,6 +86,7 @@ struct ContentView: View {
                         }
                         .simultaneousGesture(TapGesture().onEnded {
                             game = Game()
+                            saveGame(userName: userName, game: game)
                         })
                         
                         // MARK: Leaderboard button

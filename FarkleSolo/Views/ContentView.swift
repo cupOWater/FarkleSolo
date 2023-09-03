@@ -76,11 +76,6 @@ struct ContentView: View {
                             MainMenuButton(textLabel: "continue", disabled: !game.hasStart)
                         }
                         .disabled(!game.hasStart)
-                        .simultaneousGesture(TapGesture().onEnded {
-                            if(game.hasStart){
-                                audioPlayer?.stop()
-                            }
-                        })
                         
                         // MARK: New game button
                         // Create a new game object
@@ -91,7 +86,6 @@ struct ContentView: View {
                         }
                         .simultaneousGesture(TapGesture().onEnded {
                             game = Game()
-                            audioPlayer?.stop()
                         })
                         
                         // MARK: Leaderboard button

@@ -268,6 +268,10 @@ struct GameView: View {
                 game.maxTurn = maxTurn
             }
         }
+        .onAppear{
+            // Stop BG Music
+            audioPlayer?.stop()
+        }
         .onDisappear{
             // Start BG Music again
             playSound(sound: "background", type: "wav", loop: -1)
